@@ -9,7 +9,6 @@ homepage = "https://github.com/clawbrowser-io/clawbrowser"
 keywords = ["headless-browser", "web-scraping", "quickjs", "markdown", "cli"]
 categories = ["command-line-utilities", "web-programming"]
 readme = "README.md"
-license = "MIT"
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
