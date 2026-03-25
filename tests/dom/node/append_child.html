@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<body>
+<div id="parent"><span id="child1">a</span></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="append_new_element">
+  var parent = document.getElementById("parent");
+  var el = document.createElement("span");
+  el.textContent = "b";
+  parent.appendChild(el);
+  testing.expectEqual(2, parent.childNodes.length);
+  testing.expectEqual("b", parent.lastChild.textContent);
+</script>
+
+<script id="append_text_node">
+  var parent = document.getElementById("parent");
+  var txt = document.createTextNode("hello");
+  parent.appendChild(txt);
+  testing.expectEqual("hello", parent.lastChild.textContent);
+</script>
+
+<script id="append_moves_existing">
+  var parent = document.getElementById("parent");
+  var wrapper = document.createElement("div");
+  wrapper.id = "wrapper";
+  document.body.appendChild(wrapper);
+  var child1 = document.getElementById("child1");
+  wrapper.appendChild(child1);
+  testing.expectEqual("wrapper", child1.parentNode.id);
+</script>
+
+<script id="append_returns_child">
+  var parent = document.createElement("div");
+  var child = document.createElement("span");
+  var ret = parent.appendChild(child);
+  testing.expectEqual(child, ret);
+</script>

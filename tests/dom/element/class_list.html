@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<body>
+<div id="el" class="alpha beta"></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="contains">
+  var cl = document.getElementById("el").classList;
+  testing.expectTrue(cl.contains("alpha"));
+  testing.expectTrue(cl.contains("beta"));
+  testing.expectFalse(cl.contains("gamma"));
+</script>
+
+<script id="add">
+  var el = document.getElementById("el");
+  el.classList.add("gamma");
+  testing.expectTrue(el.classList.contains("gamma"));
+</script>
+
+<script id="remove">
+  var el = document.getElementById("el");
+  el.classList.add("temp");
+  el.classList.remove("temp");
+  testing.expectFalse(el.classList.contains("temp"));
+</script>
+
+<script id="toggle">
+  var el = document.getElementById("el");
+  el.classList.toggle("toggled");
+  testing.expectTrue(el.classList.contains("toggled"));
+  el.classList.toggle("toggled");
+  testing.expectFalse(el.classList.contains("toggled"));
+</script>
+
+<script id="length">
+  var el = document.createElement("div");
+  el.className = "a b c";
+  testing.expectEqual(3, el.classList.length);
+</script>
+
+<script id="item">
+  var el = document.createElement("div");
+  el.className = "x y z";
+  testing.expectEqual("x", el.classList.item(0));
+  testing.expectEqual("z", el.classList.item(2));
+</script>

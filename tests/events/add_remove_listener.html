@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<body>
+<div id="target"></div>
+</body>
+<script src="../testing.js"></script>
+
+<script id="addEventListener_fires">
+  var target = document.getElementById("target");
+  var fired = false;
+  target.addEventListener("click", function() {
+    fired = true;
+  });
+  target.dispatchEvent(new Event("click"));
+  testing.expectTrue(fired);
+</script>
+
+<script id="removeEventListener">
+  var target = document.getElementById("target");
+  var count = 0;
+  var handler = function() { count++; };
+  target.addEventListener("test", handler);
+  target.dispatchEvent(new Event("test"));
+  testing.expectEqual(1, count);
+  target.removeEventListener("test", handler);
+  target.dispatchEvent(new Event("test"));
+  testing.expectEqual(1, count);
+</script>
+
+<script id="dispatchEvent_returns_true">
+  var target = document.getElementById("target");
+  var result = target.dispatchEvent(new Event("noop"));
+  testing.expectTrue(result);
+</script>
+
+<script id="multiple_listeners">
+  var el = document.createElement("div");
+  var log = [];
+  el.addEventListener("x", function() { log.push("a"); });
+  el.addEventListener("x", function() { log.push("b"); });
+  el.dispatchEvent(new Event("x"));
+  testing.expectEqual(2, log.length);
+  testing.expectEqual("a", log[0]);
+  testing.expectEqual("b", log[1]);
+</script>

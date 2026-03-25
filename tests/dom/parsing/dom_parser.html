@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<body></body>
+<script src="../../testing.js"></script>
+
+<script id="parseFromString_html">
+  var parser = new DOMParser();
+  var doc = parser.parseFromString("<html><body><p>hi</p></body></html>", "text/html");
+  testing.expectEqual(9, doc.nodeType);
+  var p = doc.querySelector("p");
+  testing.expectEqual("hi", p.textContent);
+</script>

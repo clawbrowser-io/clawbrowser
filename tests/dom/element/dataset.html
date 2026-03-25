@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<body>
+<div id="el" data-name="test" data-value="42" data-long-name="x"></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="read_dataset">
+  var ds = document.getElementById("el").dataset;
+  testing.expectEqual("test", ds.name);
+  testing.expectEqual("42", ds.value);
+</script>
+
+<script id="write_dataset">
+  var el = document.getElementById("el");
+  el.dataset.color = "red";
+  testing.expectEqual("red", el.getAttribute("data-color"));
+  testing.expectEqual("red", el.dataset.color);
+</script>
+
+<script id="camelCase_mapping">
+  var el = document.getElementById("el");
+  testing.expectEqual("x", el.dataset.longName);
+</script>

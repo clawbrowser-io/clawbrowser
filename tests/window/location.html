@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="location_exists">
+  testing.expectEqual(true, location !== null && location !== undefined);
+</script>
+
+<script id="location_href">
+  testing.expectEqual("string", typeof location.href);
+  testing.expectTrue(location.href.length > 0);
+</script>
+
+<script id="location_protocol">
+  testing.expectEqual("http:", location.protocol);
+</script>
+
+<script id="location_hostname">
+  testing.expectEqual("127.0.0.1", location.hostname);
+</script>
+
+<script id="location_pathname">
+  testing.expectTrue(location.pathname.indexOf("location.html") >= 0);
+</script>

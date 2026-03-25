@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<body>
+<div id="el">text</div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="nodeType_element">
+  var el = document.getElementById("el");
+  testing.expectEqual(1, el.nodeType);
+</script>
+
+<script id="nodeType_text">
+  var t = document.createTextNode("hi");
+  testing.expectEqual(3, t.nodeType);
+</script>
+
+<script id="nodeType_document">
+  testing.expectEqual(9, document.nodeType);
+</script>
+
+<script id="nodeName_element">
+  var el = document.getElementById("el");
+  testing.expectEqual("DIV", el.nodeName);
+</script>
+
+<script id="nodeName_text">
+  var t = document.createTextNode("hi");
+  testing.expectEqual("#text", t.nodeName);
+</script>
+
+<script id="hasChildNodes">
+  var el = document.getElementById("el");
+  testing.expectTrue(el.hasChildNodes());
+  var empty = document.createElement("div");
+  testing.expectFalse(empty.hasChildNodes());
+</script>

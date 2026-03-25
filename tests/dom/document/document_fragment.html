@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<body>
+<div id="target"></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="fragment_basic">
+  var frag = document.createDocumentFragment();
+  testing.expectEqual(11, frag.nodeType);
+  var s = document.createElement("span");
+  s.textContent = "hello";
+  frag.appendChild(s);
+  testing.expectEqual(1, frag.childNodes.length);
+</script>

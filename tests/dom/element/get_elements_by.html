@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<body>
+<div id="root">
+  <p class="a">1</p>
+  <p class="b">2</p>
+  <span class="a">3</span>
+</div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="getElementsByTagName">
+  var ps = document.getElementsByTagName("p");
+  testing.expectEqual(2, ps.length);
+  testing.expectEqual("1", ps[0].textContent);
+</script>
+
+<script id="getElementsByClassName">
+  var els = document.getElementsByClassName("a");
+  testing.expectEqual(2, els.length);
+</script>
+
+<script id="getElementsByTagName_star">
+  var root = document.getElementById("root");
+  var all = root.getElementsByTagName("*");
+  testing.expectTrue(all.length >= 3);
+</script>
+
+<script id="getElementsByClassName_empty">
+  var els = document.getElementsByClassName("nonexistent");
+  testing.expectEqual(0, els.length);
+</script>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<body></body>
+<script src="../../testing.js"></script>
+
+<script id="document_head">
+  testing.expectEqual("HEAD", document.head.tagName);
+</script>
+
+<script id="document_body">
+  testing.expectEqual("BODY", document.body.tagName);
+</script>
+
+<script id="document_documentElement">
+  testing.expectEqual("HTML", document.documentElement.tagName);
+</script>
+
+<script id="document_nodeType">
+  testing.expectEqual(9, document.nodeType);
+</script>

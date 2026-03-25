@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<body></body>
+<script src="../../testing.js"></script>
+
+<script id="createElement_basic">
+  var el = document.createElement("div");
+  testing.expectEqual("DIV", el.tagName);
+  testing.expectEqual(1, el.nodeType);
+  testing.expectEqual(null, el.parentNode);
+</script>
+
+<script id="createElement_with_attributes">
+  var el = document.createElement("input");
+  el.setAttribute("type", "text");
+  el.setAttribute("value", "hello");
+  testing.expectEqual("INPUT", el.tagName);
+  testing.expectEqual("text", el.getAttribute("type"));
+</script>
+
+<script id="createTextNode">
+  var t = document.createTextNode("hello world");
+  testing.expectEqual(3, t.nodeType);
+  testing.expectEqual("hello world", t.textContent);
+  testing.expectEqual("#text", t.nodeName);
+</script>
+
+<script id="createDocumentFragment">
+  var frag = document.createDocumentFragment();
+  testing.expectEqual(11, frag.nodeType);
+  var a = document.createElement("span");
+  a.textContent = "a";
+  var b = document.createElement("span");
+  b.textContent = "b";
+  frag.appendChild(a);
+  frag.appendChild(b);
+  testing.expectEqual(2, frag.childNodes.length);
+
+  var container = document.createElement("div");
+  container.appendChild(frag);
+  testing.expectEqual(2, container.childNodes.length);
+  testing.expectEqual(0, frag.childNodes.length);
+</script>
+

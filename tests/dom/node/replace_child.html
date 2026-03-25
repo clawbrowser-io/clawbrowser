@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<body>
+<div id="parent"><span id="old">old</span></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="replace_child_basic">
+  var parent = document.getElementById("parent");
+  var oldNode = document.getElementById("old");
+  var newNode = document.createElement("em");
+  newNode.textContent = "new";
+  parent.replaceChild(newNode, oldNode);
+  testing.expectEqual("new", parent.firstChild.textContent);
+  testing.expectEqual("EM", parent.firstChild.tagName);
+</script>
+
+<script id="replace_returns_old">
+  var parent = document.createElement("div");
+  var oldN = document.createElement("span");
+  var newN = document.createElement("em");
+  parent.appendChild(oldN);
+  var ret = parent.replaceChild(newN, oldN);
+  testing.expectEqual(oldN, ret);
+</script>
+
+<script id="replaced_node_detached">
+  var parent = document.createElement("div");
+  var child = document.createElement("span");
+  parent.appendChild(child);
+  var replacement = document.createElement("b");
+  parent.replaceChild(replacement, child);
+  testing.expectEqual(null, child.parentNode);
+</script>

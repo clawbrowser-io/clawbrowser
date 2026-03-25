@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<body>
+<div id="root">
+  <p class="item">first</p>
+  <p class="item special">second</p>
+  <p class="item">third</p>
+  <div class="nested"><span class="item">nested</span></div>
+</div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="querySelector_id">
+  var el = document.querySelector("#root");
+  testing.expectEqual("DIV", el.tagName);
+</script>
+
+<script id="querySelector_class">
+  var el = document.querySelector(".special");
+  testing.expectEqual("second", el.textContent);
+</script>
+
+<script id="querySelector_tag">
+  var el = document.querySelector("p");
+  testing.expectEqual("first", el.textContent);
+</script>
+
+<script id="querySelectorAll_count">
+  var items = document.querySelectorAll(".item");
+  testing.expectEqual(4, items.length);
+</script>
+
+<script id="querySelectorAll_scoped">
+  var root = document.getElementById("root");
+  var items = root.querySelectorAll("p.item");
+  testing.expectEqual(3, items.length);
+</script>
+
+<script id="querySelector_not_found">
+  var el = document.querySelector("#nonexistent");
+  testing.expectEqual(null, el);
+</script>
+
+<script id="querySelectorAll_empty">
+  var items = document.querySelectorAll(".nonexistent");
+  testing.expectEqual(0, items.length);
+</script>
+
+<script id="querySelector_compound">
+  var el = document.querySelector("p.item.special");
+  testing.expectEqual("second", el.textContent);
+</script>

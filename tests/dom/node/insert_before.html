@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<body>
+<div id="container"><span id="second">2</span></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="insert_before_existing">
+  var container = document.getElementById("container");
+  var second = document.getElementById("second");
+  var first = document.createElement("span");
+  first.textContent = "1";
+  container.insertBefore(first, second);
+  testing.expectEqual("1", container.firstChild.textContent);
+  testing.expectEqual("2", container.childNodes[1].textContent);
+</script>
+
+<script id="insert_before_null_appends">
+  var container = document.getElementById("container");
+  var last = document.createElement("span");
+  last.textContent = "3";
+  container.insertBefore(last, null);
+  testing.expectEqual("3", container.lastChild.textContent);
+</script>
+
+<script id="insert_before_returns_node">
+  var parent = document.createElement("div");
+  var ref = document.createElement("span");
+  parent.appendChild(ref);
+  var newNode = document.createElement("em");
+  var ret = parent.insertBefore(newNode, ref);
+  testing.expectEqual(newNode, ret);
+</script>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="window_exists">
+  testing.expectEqual("object", typeof window);
+</script>
+
+<script id="self_equals_window">
+  testing.expectEqual(window, self);
+</script>
+
+<script id="globalThis_equals_window">
+  testing.expectEqual(window, globalThis);
+</script>
+
+<script id="window_document">
+  testing.expectEqual(document, window.document);
+</script>

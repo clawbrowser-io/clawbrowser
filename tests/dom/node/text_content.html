@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<body>
+<div id="mixed">Hello <span>World</span></div>
+<div id="empty"></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="get_text_content">
+  var el = document.getElementById("mixed");
+  testing.expectEqual("Hello World", el.textContent);
+</script>
+
+<script id="set_text_content">
+  var el = document.createElement("div");
+  el.innerHTML = "<span>old</span>";
+  el.textContent = "plain";
+  testing.expectEqual("plain", el.textContent);
+  testing.expectEqual(0, el.children.length);
+</script>
+
+<script id="empty_text_content">
+  var el = document.getElementById("empty");
+  testing.expectEqual("", el.textContent);
+</script>
+
+<script id="text_node_text_content">
+  var t = document.createTextNode("abc");
+  testing.expectEqual("abc", t.textContent);
+</script>

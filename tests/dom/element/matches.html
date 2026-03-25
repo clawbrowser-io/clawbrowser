@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<body>
+<div id="el" class="foo bar"></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="matches_tag">
+  var el = document.getElementById("el");
+  testing.expectTrue(el.matches("div"));
+</script>
+
+<script id="matches_class">
+  var el = document.getElementById("el");
+  testing.expectTrue(el.matches(".foo"));
+  testing.expectTrue(el.matches(".bar"));
+  testing.expectTrue(el.matches(".foo.bar"));
+</script>
+
+<script id="matches_id">
+  var el = document.getElementById("el");
+  testing.expectTrue(el.matches("#el"));
+</script>
+
+<script id="matches_false">
+  var el = document.getElementById("el");
+  testing.expectFalse(el.matches("span"));
+  testing.expectFalse(el.matches(".baz"));
+</script>

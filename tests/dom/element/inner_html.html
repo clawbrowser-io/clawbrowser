@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<body>
+<div id="el"><span>hello</span></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="get_innerHTML">
+  var el = document.getElementById("el");
+  testing.expectEqual("<span>hello</span>", el.innerHTML);
+</script>
+
+<script id="set_innerHTML">
+  var el = document.createElement("div");
+  el.innerHTML = "<b>bold</b><i>italic</i>";
+  testing.expectEqual(2, el.children.length);
+  testing.expectEqual("B", el.children[0].tagName);
+  testing.expectEqual("I", el.children[1].tagName);
+</script>
+
+<script id="set_innerHTML_clears">
+  var el = document.createElement("div");
+  el.innerHTML = "<p>old</p>";
+  el.innerHTML = "<span>new</span>";
+  testing.expectEqual(1, el.children.length);
+  testing.expectEqual("SPAN", el.children[0].tagName);
+</script>
+
+<script id="set_innerHTML_empty">
+  var el = document.createElement("div");
+  el.innerHTML = "<p>content</p>";
+  el.innerHTML = "";
+  testing.expectEqual(0, el.childNodes.length);
+</script>

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<body>
+<div id="wrap"><span id="target" class="c">text</span></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="get_outerHTML">
+  var el = document.getElementById("target");
+  testing.expectEqual('<span id="target" class="c">text</span>', el.outerHTML);
+</script>

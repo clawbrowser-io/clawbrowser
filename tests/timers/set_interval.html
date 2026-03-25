@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="setInterval_returns_id">
+  var id = setInterval(function() {}, 10000);
+  testing.expectTrue(typeof id === "number");
+  testing.expectTrue(id > 0);
+  clearInterval(id);
+</script>

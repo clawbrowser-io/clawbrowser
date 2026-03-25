@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<body>
+<div id="source" class="cls" data-x="1"><span>inner</span></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="shallow_clone">
+  var src = document.getElementById("source");
+  var clone = src.cloneNode(false);
+  testing.expectEqual("DIV", clone.tagName);
+  testing.expectEqual("cls", clone.getAttribute("class"));
+  testing.expectEqual(0, clone.childNodes.length);
+</script>
+
+<script id="deep_clone">
+  var src = document.getElementById("source");
+  var clone = src.cloneNode(true);
+  testing.expectEqual("DIV", clone.tagName);
+  testing.expectTrue(clone.childNodes.length > 0);
+  testing.expectEqual("SPAN", clone.firstChild.tagName);
+  testing.expectEqual("inner", clone.firstChild.textContent);
+</script>
+
+<script id="clone_not_in_document">
+  var src = document.getElementById("source");
+  var clone = src.cloneNode(true);
+  testing.expectEqual(null, clone.parentNode);
+</script>
+
+<script id="clone_is_different_node">
+  var src = document.getElementById("source");
+  var clone = src.cloneNode(true);
+  testing.expectFalse(src === clone);
+</script>

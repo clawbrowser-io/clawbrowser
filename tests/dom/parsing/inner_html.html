@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<body></body>
+<script src="../../testing.js"></script>
+
+<script id="innerHTML_basic_parse">
+  var div = document.createElement("div");
+  div.innerHTML = "<p>hello</p>";
+  testing.expectEqual(1, div.children.length);
+  testing.expectEqual("P", div.children[0].tagName);
+  testing.expectEqual("hello", div.children[0].textContent);
+</script>
+
+<script id="innerHTML_nested">
+  var div = document.createElement("div");
+  div.innerHTML = "<ul><li>a</li><li>b</li></ul>";
+  var ul = div.firstChild;
+  testing.expectEqual("UL", ul.tagName);
+  testing.expectEqual(2, ul.children.length);
+</script>
+
+<script id="innerHTML_with_attributes">
+  var div = document.createElement("div");
+  div.innerHTML = '<a href="http://example.com" class="link">click</a>';
+  var a = div.firstChild;
+  testing.expectEqual("A", a.tagName);
+  testing.expectEqual("http://example.com", a.getAttribute("href"));
+  testing.expectEqual("link", a.getAttribute("class"));
+</script>
+
+<script id="innerHTML_text_only">
+  var div = document.createElement("div");
+  div.innerHTML = "just text";
+  testing.expectEqual("just text", div.textContent);
+  testing.expectEqual(0, div.children.length);
+</script>
+
+<script id="insertAdjacentHTML_beforeend">
+  var div = document.createElement("div");
+  div.innerHTML = "<span>first</span>";
+  div.insertAdjacentHTML("beforeend", "<span>second</span>");
+  testing.expectEqual(2, div.children.length);
+  testing.expectEqual("second", div.children[1].textContent);
+</script>
+
+<script id="insertAdjacentHTML_afterbegin">
+  var div = document.createElement("div");
+  div.innerHTML = "<span>last</span>";
+  div.insertAdjacentHTML("afterbegin", "<span>first</span>");
+  testing.expectEqual("first", div.children[0].textContent);
+  testing.expectEqual("last", div.children[1].textContent);
+</script>

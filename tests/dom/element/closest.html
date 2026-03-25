@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<body>
+<div id="outer" class="container">
+  <div id="inner" class="panel">
+    <span id="target">hi</span>
+  </div>
+</div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="closest_self">
+  var target = document.getElementById("target");
+  var result = target.closest("span");
+  testing.expectEqual(target, result);
+</script>
+
+<script id="closest_parent">
+  var target = document.getElementById("target");
+  var result = target.closest(".panel");
+  testing.expectEqual(document.getElementById("inner"), result);
+</script>
+
+<script id="closest_ancestor">
+  var target = document.getElementById("target");
+  var result = target.closest(".container");
+  testing.expectEqual(document.getElementById("outer"), result);
+</script>
+
+<script id="closest_not_found">
+  var target = document.getElementById("target");
+  var result = target.closest(".nonexistent");
+  testing.expectEqual(null, result);
+</script>

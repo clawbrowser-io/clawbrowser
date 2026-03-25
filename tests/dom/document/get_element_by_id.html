@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<body>
+<div id="exists">content</div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="getElementById_found">
+  var el = document.getElementById("exists");
+  testing.expectEqual("content", el.textContent);
+  testing.expectEqual("DIV", el.tagName);
+</script>
+
+<script id="getElementById_not_found">
+  var el = document.getElementById("nope");
+  testing.expectEqual(null, el);
+</script>
+
+<script id="getElementById_dynamic">
+  var el = document.createElement("p");
+  el.id = "dynamic";
+  el.textContent = "added";
+  document.body.appendChild(el);
+  var found = document.getElementById("dynamic");
+  testing.expectEqual("added", found.textContent);
+</script>

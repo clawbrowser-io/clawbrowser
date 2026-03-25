@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="event_basic">
+  var e = new Event("click");
+  testing.expectEqual("click", e.type);
+  testing.expectFalse(e.bubbles);
+  testing.expectFalse(e.cancelable);
+</script>
+
+<script id="event_with_options">
+  var e = new Event("custom", { bubbles: true, cancelable: true });
+  testing.expectEqual("custom", e.type);
+  testing.expectTrue(e.bubbles);
+  testing.expectTrue(e.cancelable);
+</script>
+
+<script id="event_target_null">
+  var e = new Event("test");
+  testing.expectEqual(null, e.target);
+</script>

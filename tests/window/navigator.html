@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="navigator_exists">
+  testing.expectEqual(true, navigator !== null && navigator !== undefined);
+</script>
+
+<script id="navigator_userAgent">
+  testing.expectEqual("string", typeof navigator.userAgent);
+  testing.expectTrue(navigator.userAgent.length > 0);
+</script>
+
+<script id="navigator_platform">
+  testing.expectEqual("string", typeof navigator.platform);
+</script>
+
+<script id="navigator_language">
+  testing.expectEqual("string", typeof navigator.language);
+</script>

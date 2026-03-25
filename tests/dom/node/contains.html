@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<body>
+<div id="outer"><div id="inner"><span id="deep">x</span></div></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="contains_self">
+  var outer = document.getElementById("outer");
+  testing.expectTrue(outer.contains(outer));
+</script>
+
+<script id="contains_child">
+  var outer = document.getElementById("outer");
+  var inner = document.getElementById("inner");
+  testing.expectTrue(outer.contains(inner));
+</script>
+
+<script id="contains_deep">
+  var outer = document.getElementById("outer");
+  var deep = document.getElementById("deep");
+  testing.expectTrue(outer.contains(deep));
+</script>
+
+<script id="not_contains_sibling">
+  var inner = document.getElementById("inner");
+  var detached = document.createElement("div");
+  testing.expectFalse(inner.contains(detached));
+</script>

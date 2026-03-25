@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<body>
+<ul id="list"><li>a</li><li>b</li><li>c</li></ul>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="childNodes_length">
+  var list = document.getElementById("list");
+  testing.expectEqual(3, list.childNodes.length);
+</script>
+
+<script id="childNodes_index">
+  var list = document.getElementById("list");
+  testing.expectEqual("a", list.childNodes[0].textContent);
+  testing.expectEqual("c", list.childNodes[2].textContent);
+</script>
+
+<script id="firstChild_lastChild">
+  var list = document.getElementById("list");
+  testing.expectEqual("a", list.firstChild.textContent);
+  testing.expectEqual("c", list.lastChild.textContent);
+</script>
+
+<script id="nextSibling_previousSibling">
+  var list = document.getElementById("list");
+  var first = list.firstChild;
+  var second = first.nextSibling;
+  testing.expectEqual("b", second.textContent);
+  testing.expectEqual(first, second.previousSibling);
+</script>
+
+<script id="parentNode">
+  var list = document.getElementById("list");
+  var child = list.firstChild;
+  testing.expectEqual(list, child.parentNode);
+</script>

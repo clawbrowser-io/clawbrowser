@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="setTimeout_returns_id">
+  var id = setTimeout(function() {}, 1000);
+  testing.expectTrue(typeof id === "number");
+  testing.expectTrue(id > 0);
+  clearTimeout(id);
+</script>
+
+<script id="setTimeout_fires">
+  testing.expectTrue(typeof setTimeout === "function");
+</script>

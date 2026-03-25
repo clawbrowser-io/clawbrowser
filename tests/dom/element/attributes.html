@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<body>
+<div id="el" class="foo" data-val="123" title="tip"></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="getAttribute">
+  var el = document.getElementById("el");
+  testing.expectEqual("foo", el.getAttribute("class"));
+  testing.expectEqual("123", el.getAttribute("data-val"));
+  testing.expectEqual("tip", el.getAttribute("title"));
+  testing.expectEqual(undefined, el.getAttribute("nonexistent"));
+</script>
+
+<script id="setAttribute">
+  var el = document.getElementById("el");
+  el.setAttribute("role", "button");
+  testing.expectEqual("button", el.getAttribute("role"));
+  el.setAttribute("role", "link");
+  testing.expectEqual("link", el.getAttribute("role"));
+</script>
+
+<script id="removeAttribute">
+  var el = document.getElementById("el");
+  el.setAttribute("temp", "yes");
+  testing.expectTrue(el.hasAttribute("temp"));
+  el.removeAttribute("temp");
+  testing.expectFalse(el.hasAttribute("temp"));
+  testing.expectEqual(undefined, el.getAttribute("temp"));
+</script>
+
+<script id="hasAttribute">
+  var el = document.getElementById("el");
+  testing.expectTrue(el.hasAttribute("class"));
+  testing.expectFalse(el.hasAttribute("nope"));
+</script>
+
+<script id="id_property">
+  var el = document.getElementById("el");
+  testing.expectEqual("el", el.id);
+</script>
+
+<script id="className_property">
+  var el = document.getElementById("el");
+  testing.expectEqual("foo", el.className);
+</script>
+
+<script id="tagName">
+  var el = document.getElementById("el");
+  testing.expectEqual("DIV", el.tagName);
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="setItem_getItem">
+  localStorage.clear();
+  localStorage.setItem("key1", "value1");
+  testing.expectEqual("value1", localStorage.getItem("key1"));
+</script>
+
+<script id="getItem_nonexistent">
+  localStorage.clear();
+  testing.expectEqual(null, localStorage.getItem("nonexistent"));
+</script>
+
+<script id="removeItem">
+  localStorage.clear();
+  localStorage.setItem("temp", "data");
+  localStorage.removeItem("temp");
+  testing.expectEqual(null, localStorage.getItem("temp"));
+</script>
+
+<script id="clear">
+  localStorage.setItem("a", "1");
+  localStorage.setItem("b", "2");
+  localStorage.clear();
+  testing.expectEqual(null, localStorage.getItem("a"));
+  testing.expectEqual(null, localStorage.getItem("b"));
+  testing.expectEqual(0, localStorage.length);
+</script>
+
+<script id="length">
+  localStorage.clear();
+  testing.expectEqual(0, localStorage.length);
+  localStorage.setItem("x", "1");
+  testing.expectEqual(1, localStorage.length);
+  localStorage.setItem("y", "2");
+  testing.expectEqual(2, localStorage.length);
+</script>
+
+<script id="overwrite">
+  localStorage.clear();
+  localStorage.setItem("k", "old");
+  localStorage.setItem("k", "new");
+  testing.expectEqual("new", localStorage.getItem("k"));
+  testing.expectEqual(1, localStorage.length);
+</script>

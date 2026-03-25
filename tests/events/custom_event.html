@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="custom_event_basic">
+  var e = new CustomEvent("myevent");
+  testing.expectEqual("myevent", e.type);
+</script>
+
+<script id="custom_event_detail">
+  var e = new CustomEvent("myevent", { detail: { key: "value" } });
+  testing.expectEqual("myevent", e.type);
+  testing.expectEqual("value", e.detail.key);
+</script>
+
+<script id="custom_event_detail_string">
+  var e = new CustomEvent("msg", { detail: "hello" });
+  testing.expectEqual("hello", e.detail);
+</script>
+
+<script id="custom_event_bubbles">
+  var e = new CustomEvent("test", { bubbles: true, detail: 42 });
+  testing.expectTrue(e.bubbles);
+  testing.expectEqual(42, e.detail);
+</script>

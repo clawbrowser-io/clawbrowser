@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<body>
+<div id="parent"><span id="a">a</span><span id="b">b</span><span id="c">c</span></div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="remove_middle_child">
+  var parent = document.getElementById("parent");
+  var b = document.getElementById("b");
+  var countBefore = parent.childNodes.length;
+  parent.removeChild(b);
+  testing.expectEqual(countBefore - 1, parent.childNodes.length);
+</script>
+
+<script id="remove_returns_node">
+  var parent = document.getElementById("parent");
+  var a = document.getElementById("a");
+  var ret = parent.removeChild(a);
+  testing.expectEqual(a, ret);
+</script>
+
+<script id="remove_first_child">
+  var parent = document.createElement("div");
+  var child = document.createElement("span");
+  parent.appendChild(child);
+  parent.removeChild(child);
+  testing.expectEqual(0, parent.childNodes.length);
+</script>

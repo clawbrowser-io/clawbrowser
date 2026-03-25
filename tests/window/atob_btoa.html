@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<script src="../testing.js"></script>
+
+<script id="btoa_basic">
+  testing.expectEqual("SGVsbG8=", btoa("Hello"));
+</script>
+
+<script id="atob_basic">
+  testing.expectEqual("Hello", atob("SGVsbG8="));
+</script>
+
+<script id="roundtrip">
+  var original = "Hello World!";
+  testing.expectEqual(original, atob(btoa(original)));
+</script>
+
+<script id="btoa_empty">
+  testing.expectEqual("", btoa(""));
+</script>
+
+<script id="atob_empty">
+  testing.expectEqual("", atob(""));
+</script>

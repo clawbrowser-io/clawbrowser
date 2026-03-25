@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<body>
+<div id="parent">
+  text
+  <span>a</span>
+  more text
+  <em>b</em>
+</div>
+</body>
+<script src="../../testing.js"></script>
+
+<script id="children_only_elements">
+  var parent = document.getElementById("parent");
+  testing.expectEqual(2, parent.children.length);
+  testing.expectEqual("SPAN", parent.children[0].tagName);
+  testing.expectEqual("EM", parent.children[1].tagName);
+</script>
+
+<script id="firstElementChild">
+  var parent = document.getElementById("parent");
+  testing.expectEqual("SPAN", parent.firstElementChild.tagName);
+</script>
+
+<script id="lastElementChild">
+  var parent = document.getElementById("parent");
+  testing.expectEqual("EM", parent.lastElementChild.tagName);
+</script>
+
+<script id="childElementCount">
+  var parent = document.getElementById("parent");
+  testing.expectEqual(2, parent.childElementCount);
+</script>
+
+<script id="nextElementSibling">
+  var parent = document.getElementById("parent");
+  var first = parent.firstElementChild;
+  testing.expectEqual("EM", first.nextElementSibling.tagName);
+</script>
+
+<script id="previousElementSibling">
+  var parent = document.getElementById("parent");
+  var last = parent.lastElementChild;
+  testing.expectEqual("SPAN", last.previousElementSibling.tagName);
+</script>
